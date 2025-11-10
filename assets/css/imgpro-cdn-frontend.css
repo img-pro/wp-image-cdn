@@ -1,0 +1,34 @@
+/**
+ * ImgPro Frontend Styles
+ *
+ * Prevents "broken image" flash during CDN fallback
+ * by hiding images until they load successfully.
+ *
+ * @package ImgPro
+ * @version 0.0.5
+ */
+
+/*
+ * Hide CDN images until they load successfully
+ * Uses visibility: hidden to prevent broken image icon
+ * while maintaining layout space (no shift)
+ */
+img[data-original-src]:not(.imgpro-cdn-loaded) {
+    visibility: hidden;
+}
+
+/*
+ * Show image instantly when loaded
+ * The imgpro-loaded class is added by onload handler
+ */
+img[data-original-src].imgpro-cdn-loaded {
+    visibility: visible;
+}
+
+/*
+ * Hide permanently failed images
+ * data-fallback='2' means both CDN and origin failed
+ */
+img[data-original-src][data-fallback='2'] {
+    visibility: hidden !important;
+}
