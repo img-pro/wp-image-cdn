@@ -190,7 +190,7 @@ class ImgPro_CDN_Admin {
                     echo wp_kses_post(
                         sprintf(
                             /* translators: 1: ImgPro link, 2: Cloudflare R2 & Workers link */
-                            __('Image CDN by %1$s, powered by %2$s', 'imgpro-cdn'),
+                            __('Image CDN - Bandwidth Saver by %1$s, powered by %2$s', 'imgpro-cdn'),
                             '<a href="https://img.pro" target="_blank">ImgPro</a>',
                             '<a href="https://www.cloudflare.com/products/r2/" target="_blank">Cloudflare R2 &amp; Workers</a>'
                         )
@@ -293,7 +293,7 @@ class ImgPro_CDN_Admin {
 
                 <div class="imgpro-cdn-settings-content">
                         <div class="imgpro-cdn-settings-section">
-                            <h3 class="imgpro-cdn-section-title"><?php esc_html_e('Cloudflare Configuration', 'imgpro-cdn'); ?></h3>
+                            <h3 class="imgpro-cdn-section-title"><?php esc_html_e('Domain Configuration', 'imgpro-cdn'); ?></h3>
                             <table class="form-table" role="presentation">
                                 <tr>
                                     <th scope="row">
