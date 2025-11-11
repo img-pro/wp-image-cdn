@@ -170,21 +170,21 @@ class ImgPro_CDN_Admin {
         $settings = $this->settings->get_all();
         ?>
         <div class="wrap imgpro-cdn-admin">
-            <div class="imgpro-header">
+            <div class="imgpro-cdn-header">
                 <div>
                     <h1><?php _e('Image CDN', 'imgpro-cdn'); ?></h1>
-                    <p class="imgpro-tagline"><?php _e('Cut bandwidth costs, boost global speed', 'imgpro-cdn'); ?></p>
+                    <p class="imgpro-cdn-tagline"><?php _e('Cut bandwidth costs, boost global speed', 'imgpro-cdn'); ?></p>
                 </div>
-                <div class="imgpro-header-meta">
-                    <span class="imgpro-version">v<?php echo esc_html(IMGPRO_CDN_VERSION); ?></span>
+                <div class="imgpro-cdn-header-meta">
+                    <span class="imgpro-cdn-version">v<?php echo esc_html(IMGPRO_CDN_VERSION); ?></span>
                 </div>
             </div>
 
-            <div class="imgpro-tab-content">
+            <div class="imgpro-cdn-tab-content">
                 <?php $this->render_settings_tab($settings); ?>
             </div>
 
-            <div class="imgpro-footer">
+            <div class="imgpro-cdn-footer">
                 <p>
                     <?php
                     printf(
@@ -213,9 +213,9 @@ class ImgPro_CDN_Admin {
 
             <?php if ($is_configured): ?>
                 <?php // Big Toggle Switch (only when configured) ?>
-                <div class="imgpro-card imgpro-toggle-card">
-                    <div class="imgpro-main-toggle">
-                        <div class="imgpro-main-toggle-status">
+                <div class="imgpro-cdn-card imgpro-toggle-card">
+                    <div class="imgpro-cdn-main-toggle">
+                        <div class="imgpro-cdn-main-toggle-status">
                             <?php if ($settings['enabled']): ?>
                                 <span class="dashicons dashicons-yes-alt"></span>
                                 <div>
@@ -231,20 +231,20 @@ class ImgPro_CDN_Admin {
                             <?php endif; ?>
                         </div>
 
-                        <label class="imgpro-main-toggle-switch">
+                        <label class="imgpro-cdn-main-toggle-switch">
                             <input type="checkbox" id="enabled" name="imgpro_cdn_settings[enabled]" value="1" <?php checked($settings['enabled'], true); ?>>
-                            <span class="imgpro-main-toggle-slider"></span>
+                            <span class="imgpro-cdn-main-toggle-slider"></span>
                         </label>
                     </div>
                 </div>
             <?php endif; ?>
 
             <?php // CDN Configuration ?>
-            <div class="imgpro-card">
+            <div class="imgpro-cdn-card">
                 <h2><?php _e('CDN Configuration', 'imgpro-cdn'); ?></h2>
                 <p class="description" style="margin-top: -8px; margin-bottom: 20px;"><?php _e('Connect your Cloudflare domains to start delivering images globally', 'imgpro-cdn'); ?></p>
 
-                <div class="imgpro-advanced-content">
+                <div class="imgpro-cdn-advanced-content">
                         <table class="form-table" role="presentation">
                             <tr>
                                 <th scope="row">

@@ -13,7 +13,7 @@
  * Uses visibility: hidden to prevent broken image icon
  * while maintaining layout space (no shift)
  */
-img[data-original-src]:not(.imgpro-cdn-loaded) {
+img[data-original-src]:not(.imgpro-loaded) {
     visibility: hidden;
 }
 
@@ -21,7 +21,7 @@ img[data-original-src]:not(.imgpro-cdn-loaded) {
  * Show image instantly when loaded
  * The imgpro-loaded class is added by onload handler
  */
-img[data-original-src].imgpro-cdn-loaded {
+img[data-original-src].imgpro-loaded {
     visibility: visible;
 }
 
