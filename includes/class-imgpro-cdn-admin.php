@@ -314,7 +314,7 @@ class ImgPro_CDN_Admin {
                     <div class="imgpro-cdn-cloud-notice-content">
                         <h4><?php esc_html_e('Using ImgPro Cloud', 'imgpro-cdn'); ?></h4>
                         <p>
-                            <?php esc_html_e('You\'re using our managed service. Your images are being delivered through our shared Cloudflare infrastructure.', 'imgpro-cdn'); ?>
+                            <?php esc_html_e('You\'re using our managed service. Your images are being delivered through our shared infrastructure.', 'imgpro-cdn'); ?>
                         </p>
                         <p>
                             <?php
