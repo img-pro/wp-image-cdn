@@ -214,9 +214,6 @@ class ImgPro_CDN_Admin {
         <?php if (!$is_configured): ?>
             <?php // Empty State for Unconfigured Plugin ?>
             <div class="imgpro-cdn-card imgpro-cdn-empty-state">
-                <div class="imgpro-cdn-empty-state-icon">
-                    <span class="dashicons dashicons-cloud"></span>
-                </div>
                 <h2><?php esc_html_e('Welcome to Image CDN', 'imgpro-cdn'); ?></h2>
                 <p class="imgpro-cdn-empty-state-description">
                     <?php esc_html_e('Get started by configuring your Cloudflare domains below. Once configured, your images will be delivered through Cloudflare\'s global network.', 'imgpro-cdn'); ?>
