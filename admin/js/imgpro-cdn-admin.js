@@ -8,6 +8,38 @@
 
     $(document).ready(function() {
 
+        // Handle "Use ImgPro Cloud" button
+        $('#imgpro-cdn-use-cloud').on('click', function() {
+            const $button = $(this);
+            const originalText = $button.text();
+
+            // Disable button and show loading state
+            $button.prop('disabled', true).text('Setting up...');
+
+            // AJAX request to save ImgPro Cloud domains
+            $.ajax({
+                url: ajaxurl,
+                type: 'POST',
+                data: {
+                    action: 'imgpro_cdn_use_cloud',
+                    nonce: imgproCdnAdmin.nonce
+                },
+                success: function(response) {
+                    if (response.success) {
+                        // Reload page to show configured state
+                        window.location.reload();
+                    } else {
+                        $button.prop('disabled', false).text(originalText);
+                        alert(response.data.message || 'Failed to configure ImgPro Cloud');
+                    }
+                },
+                error: function() {
+                    $button.prop('disabled', false).text(originalText);
+                    alert('An error occurred. Please try again.');
+                }
+            });
+        });
+
         // Handle main toggle switch
         $('#enabled').on('change', function() {
             const $toggle = $(this);

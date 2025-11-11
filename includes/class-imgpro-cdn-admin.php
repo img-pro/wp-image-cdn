@@ -39,6 +39,7 @@ class ImgPro_CDN_Admin {
 
         // Register AJAX handlers
         add_action('wp_ajax_imgpro_cdn_toggle_enabled', [$this, 'ajax_toggle_enabled']);
+        add_action('wp_ajax_imgpro_cdn_use_cloud', [$this, 'ajax_use_cloud']);
     }
 
     /**
@@ -216,20 +217,40 @@ class ImgPro_CDN_Admin {
             <div class="imgpro-cdn-card imgpro-cdn-empty-state">
                 <h2><?php esc_html_e('Welcome to Image CDN', 'imgpro-cdn'); ?></h2>
                 <p class="imgpro-cdn-empty-state-description">
-                    <?php esc_html_e('Get started by configuring your Cloudflare domains below. Once configured, your images will be delivered through Cloudflare\'s global network.', 'imgpro-cdn'); ?>
+                    <?php esc_html_e('Choose how you want to deliver your images globally:', 'imgpro-cdn'); ?>
                 </p>
-                <div class="imgpro-cdn-empty-state-features">
-                    <div class="imgpro-cdn-feature-item">
-                        <span class="dashicons dashicons-performance"></span>
-                        <span><?php esc_html_e('Global CDN delivery', 'imgpro-cdn'); ?></span>
+
+                <div class="imgpro-cdn-setup-options">
+                    <div class="imgpro-cdn-setup-option imgpro-cdn-setup-option-cloud">
+                        <div class="imgpro-cdn-setup-option-header">
+                            <span class="dashicons dashicons-cloud"></span>
+                            <h3><?php esc_html_e('ImgPro Cloud', 'imgpro-cdn'); ?></h3>
+                            <span class="imgpro-cdn-badge imgpro-cdn-badge-recommended"><?php esc_html_e('Recommended', 'imgpro-cdn'); ?></span>
+                        </div>
+                        <p><?php esc_html_e('Start instantly with our managed service. No Cloudflare setup required.', 'imgpro-cdn'); ?></p>
+                        <button type="button" class="button button-primary button-hero imgpro-cdn-use-cloud" id="imgpro-cdn-use-cloud">
+                            <?php esc_html_e('Use ImgPro Cloud', 'imgpro-cdn'); ?>
+                        </button>
+                        <p class="imgpro-cdn-setup-note">
+                            <span class="dashicons dashicons-info"></span>
+                            <?php esc_html_e('Free to start, scales with your traffic', 'imgpro-cdn'); ?>
+                        </p>
                     </div>
-                    <div class="imgpro-cdn-feature-item">
-                        <span class="dashicons dashicons-saved"></span>
-                        <span><?php esc_html_e('Bandwidth cost savings', 'imgpro-cdn'); ?></span>
-                    </div>
-                    <div class="imgpro-cdn-feature-item">
-                        <span class="dashicons dashicons-shield"></span>
-                        <span><?php esc_html_e('Free tier friendly', 'imgpro-cdn'); ?></span>
+
+                    <div class="imgpro-cdn-setup-option">
+                        <div class="imgpro-cdn-setup-option-header">
+                            <span class="dashicons dashicons-admin-generic"></span>
+                            <h3><?php esc_html_e('Your Own Cloudflare', 'imgpro-cdn'); ?></h3>
+                        </div>
+                        <p><?php esc_html_e('Deploy the worker to your own Cloudflare account for full control.', 'imgpro-cdn'); ?></p>
+                        <a href="https://github.com/img-pro/wp-image-cdn-worker" target="_blank" class="button button-secondary button-hero">
+                            <?php esc_html_e('View Setup Guide', 'imgpro-cdn'); ?>
+                            <span class="dashicons dashicons-external"></span>
+                        </a>
+                        <p class="imgpro-cdn-setup-note">
+                            <span class="dashicons dashicons-info"></span>
+                            <?php esc_html_e('15 minute setup, complete control over your infrastructure', 'imgpro-cdn'); ?>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -287,6 +308,34 @@ class ImgPro_CDN_Admin {
                     <h2><?php esc_html_e('Image CDN Settings', 'imgpro-cdn'); ?></h2>
                     <p class="imgpro-cdn-card-description"><?php esc_html_e('Connect your Cloudflare domains to start delivering images globally', 'imgpro-cdn'); ?></p>
                 </div>
+
+                <?php
+                // Check if using ImgPro Cloud
+                $using_imgpro_cloud = ($settings['cdn_url'] === 'wp.img.pro' && $settings['worker_url'] === 'fetch.wp.img.pro');
+                if ($using_imgpro_cloud):
+                ?>
+                    <div class="imgpro-cdn-cloud-notice">
+                        <div class="imgpro-cdn-cloud-notice-icon">
+                            <span class="dashicons dashicons-cloud"></span>
+                        </div>
+                        <div class="imgpro-cdn-cloud-notice-content">
+                            <h4><?php esc_html_e('Using ImgPro Cloud', 'imgpro-cdn'); ?></h4>
+                            <p>
+                                <?php esc_html_e('You\'re using our managed service. Your images are being delivered through our shared Cloudflare infrastructure.', 'imgpro-cdn'); ?>
+                            </p>
+                            <p>
+                                <?php
+                                echo wp_kses_post(
+                                    sprintf(
+                                        __('Want to use your own Cloudflare account? %s to deploy the worker yourself.', 'imgpro-cdn'),
+                                        '<a href="https://github.com/img-pro/wp-image-cdn-worker" target="_blank">' . __('View setup guide', 'imgpro-cdn') . ' <span class="dashicons dashicons-external"></span></a>'
+                                    )
+                                );
+                                ?>
+                            </p>
+                        </div>
+                    </div>
+                <?php endif; ?>
 
                 <div class="imgpro-cdn-settings-content">
                         <div class="imgpro-cdn-settings-section">
@@ -446,6 +495,38 @@ class ImgPro_CDN_Admin {
             wp_send_json_success(['message' => $message]);
         } else {
             wp_send_json_error(['message' => __('Failed to update settings. Please try again.', 'imgpro-cdn')]);
+        }
+    }
+
+    public function ajax_use_cloud() {
+        // Verify nonce
+        $nonce = isset($_POST['nonce']) ? sanitize_text_field(wp_unslash($_POST['nonce'])) : '';
+        if (!wp_verify_nonce($nonce, 'imgpro_cdn_toggle_enabled')) {
+            wp_send_json_error(['message' => __('Security check failed', 'imgpro-cdn')]);
+        }
+
+        // Verify permissions
+        if (!current_user_can('manage_options')) {
+            wp_send_json_error(['message' => __('You do not have permission to perform this action', 'imgpro-cdn')]);
+        }
+
+        // Get current settings
+        $current_settings = $this->settings->get_all();
+
+        // Set ImgPro Cloud domains
+        $current_settings['cdn_url'] = 'wp.img.pro';
+        $current_settings['worker_url'] = 'fetch.wp.img.pro';
+        $current_settings['enabled'] = true;
+
+        // Save settings
+        $result = update_option(ImgPro_CDN_Settings::OPTION_KEY, $current_settings);
+
+        if ($result !== false) {
+            wp_send_json_success([
+                'message' => __('ImgPro Cloud configured successfully!', 'imgpro-cdn')
+            ]);
+        } else {
+            wp_send_json_error(['message' => __('Failed to configure ImgPro Cloud. Please try again.', 'imgpro-cdn')]);
         }
     }
 }
