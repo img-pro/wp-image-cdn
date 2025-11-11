@@ -4,7 +4,7 @@ Tags: cdn, images, cloudflare, performance, bandwidth
 Requires at least: 6.2
 Tested up to: 6.7
 Requires PHP: 7.4
-Stable tag: 0.0.7
+Stable tag: 0.0.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -114,8 +114,8 @@ Yes! Image CDN works with ALL WordPress image optimization plugins. It doesn't m
 = What happens when I uninstall the plugin? =
 
 The plugin completely removes all settings and data upon uninstallation:
-* Plugin settings (imgpro_settings)
-* Version tracking (imgpro_version)
+* Plugin settings (imgpro_cdn_settings)
+* Version tracking (imgpro_cdn_version)
 * Works with multisite installations
 
 Your WordPress images remain unchanged in the media library. Images cached in Cloudflare R2 are not automatically deleted - you can manage those separately in your Cloudflare dashboard.
@@ -139,6 +139,13 @@ This plugin is specifically designed for Cloudflare R2. If you need a different 
 3. Worker metrics - Monitor your usage in Cloudflare Dashboard
 
 == Changelog ==
+
+= 0.0.8 (2025-11-11) =
+* CRITICAL FIX: Fixed JavaScript string escaping breaking image display
+* Fixed onload/onerror handlers using incorrect quote style causing syntax errors
+* Fixed images remaining hidden due to imgpro-loaded class never being added
+* Fixed AJAX action name mismatch in admin toggle functionality
+* All inline JavaScript now properly escapes quotes for WordPress attribute handling
 
 = 0.0.7 (2025-11-09) =
 * Performance: Added request-level caching to context detection (99% reduction in redundant checks)
@@ -182,6 +189,9 @@ This plugin is specifically designed for Cloudflare R2. If you need a different 
 * Compatible with all WordPress optimization plugins
 
 == Upgrade Notice ==
+
+= 0.0.8 =
+CRITICAL UPDATE: Fixes JavaScript errors preventing images from displaying. Update immediately if experiencing blank/hidden images.
 
 = 0.0.7 =
 Performance improvements and security hardening. Recommended update for all users.

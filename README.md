@@ -1,6 +1,6 @@
 # Image CDN by ImgPro - WordPress Plugin
 
-[![WordPress Plugin Version](https://img.shields.io/badge/version-0.0.7-blue.svg)](https://wordpress.org/plugins/imgpro/)
+[![WordPress Plugin Version](https://img.shields.io/badge/version-0.0.8-blue.svg)](https://wordpress.org/plugins/imgpro-cdn/)
 [![Requires WordPress Version](https://img.shields.io/badge/wordpress-6.2%2B-blue.svg)](https://wordpress.org/download/)
 [![Requires PHP Version](https://img.shields.io/badge/php-7.4%2B-purple.svg)](https://www.php.net/)
 [![License](https://img.shields.io/badge/license-GPL--2.0--or--later-red.svg)](LICENSE)
@@ -52,7 +52,7 @@ WordPress Admin → Plugins → Add New → Search "Image CDN"
 ```bash
 # Download latest release
 cd wp-content/plugins
-git clone https://github.com/img-pro/wp-image-cdn.git imgpro
+git clone https://github.com/img-pro/wp-image-cdn.git imgpro-cdn
 ```
 
 ### 2. Deploy Cloudflare Worker
@@ -185,55 +185,55 @@ Most small/medium WordPress sites pay **$0/month** on Cloudflare's free tier.
 
 ```bash
 # Clone repository
-git clone https://github.com/img-pro/wp-image-cdn.git imgpro
-cd imgpro
+git clone https://github.com/img-pro/wp-image-cdn.git imgpro-cdn
+cd imgpro-cdn
 
 # Install in WordPress
-ln -s $(pwd) /path/to/wordpress/wp-content/plugins/imgpro
+ln -s $(pwd) /path/to/wordpress/wp-content/plugins/imgpro-cdn
 
 # Activate plugin
-wp plugin activate imgpro
+wp plugin activate imgpro-cdn
 ```
 
 ### File Structure
 
 ```
 wp-image-cdn/
-├── imgpro.php              # Main plugin file
-├── readme.txt              # WordPress.org readme
-├── LICENSE                 # GPL v2 license
-├── uninstall.php           # Clean uninstall
+├── imgpro-cdn.php                      # Main plugin file
+├── readme.txt                          # WordPress.org readme
+├── LICENSE                             # GPL v2 license
+├── uninstall.php                       # Clean uninstall
 ├── includes/
-│   ├── class-imgpro-core.php      # Core functionality
-│   ├── class-imgpro-settings.php  # Settings management
-│   ├── class-imgpro-rewriter.php  # URL rewriting
-│   └── class-imgpro-admin.php     # Admin interface
+│   ├── class-imgpro-cdn-core.php      # Core functionality
+│   ├── class-imgpro-cdn-settings.php  # Settings management
+│   ├── class-imgpro-cdn-rewriter.php  # URL rewriting
+│   └── class-imgpro-cdn-admin.php     # Admin interface
 ├── admin/
 │   ├── css/
-│   │   └── imgpro-admin.css       # Admin styles
+│   │   └── imgpro-cdn-admin.css       # Admin styles
 │   └── js/
-│       └── imgpro-admin.js        # Admin JavaScript
+│       └── imgpro-cdn-admin.js        # Admin JavaScript
 ├── assets/
 │   └── css/
-│       └── imgpro-frontend.css    # Frontend styles
+│       └── imgpro-cdn-frontend.css    # Frontend styles
 └── languages/
-    └── imgpro.pot                  # Translation template
+    └── imgpro-cdn.pot                  # Translation template
 ```
 
 ### Translation
 
 ```bash
 # Generate .pot file
-wp i18n make-pot . languages/imgpro.pot
+wp i18n make-pot . languages/imgpro-cdn.pot
 
 # Translations via WordPress.org
-# Visit: https://translate.wordpress.org/projects/wp-plugins/imgpro
+# Visit: https://translate.wordpress.org/projects/wp-plugins/imgpro-cdn
 ```
 
 ## Support
 
 **WordPress.org Support Forum:**
-https://wordpress.org/support/plugin/imgpro/
+https://wordpress.org/support/plugin/imgpro-cdn/
 
 **GitHub Issues:**
 https://github.com/img-pro/wp-image-cdn/issues
