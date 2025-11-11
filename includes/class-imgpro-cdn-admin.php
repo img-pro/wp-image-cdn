@@ -233,7 +233,7 @@ class ImgPro_CDN_Admin {
                         </button>
                         <p class="imgpro-cdn-setup-note">
                             <span class="dashicons dashicons-info"></span>
-                            <?php esc_html_e('Free to start, scales with your traffic', 'imgpro-cdn'); ?>
+                            <?php esc_html_e('Fast setup, free to try.', 'imgpro-cdn'); ?>
                         </p>
                     </div>
 
