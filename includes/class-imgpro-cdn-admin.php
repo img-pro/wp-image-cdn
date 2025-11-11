@@ -193,7 +193,7 @@ class ImgPro_CDN_Admin {
                             /* translators: 1: ImgPro link, 2: Cloudflare R2 & Workers link */
                             __('Image CDN - Bandwidth Saver by %1$s, powered by %2$s', 'imgpro-cdn'),
                             '<a href="https://img.pro" target="_blank">ImgPro</a>',
-                            '<a href="https://www.cloudflare.com/products/r2/" target="_blank">Cloudflare R2 &amp; Workers</a>'
+                            '<a href="https://www.cloudflare.com/developer-platform/products/r2/" target="_blank">Cloudflare R2</a> &amp; <a href="https://www.cloudflare.com/developer-platform/products/workers/" target="_blank">Workers</a>'
                         )
                     );
                     ?>

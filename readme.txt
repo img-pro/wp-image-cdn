@@ -286,7 +286,7 @@ For support:
 This plugin connects to Cloudflare's infrastructure to deliver images globally:
 
 **Cloudflare R2 (Object Storage)**
-* Service: https://www.cloudflare.com/products/r2/
+* Service: https://www.cloudflare.com/developer-platform/products/r2/
 * Purpose: Stores cached images for global delivery
 * Privacy Policy: https://www.cloudflare.com/privacypolicy/
 * Terms of Service: https://www.cloudflare.com/terms/
@@ -294,7 +294,7 @@ This plugin connects to Cloudflare's infrastructure to deliver images globally:
 * Data: Only publicly accessible images from your WordPress site are cached
 
 **Cloudflare Workers (Edge Compute)**
-* Service: https://workers.cloudflare.com/
+* Service: https://www.cloudflare.com/developer-platform/products/workers/
 * Purpose: Processes new images and cache misses
 * You control: You deploy the worker code to your own Cloudflare account
 * No data sharing: Images flow directly from your WordPress site to your Cloudflare account
