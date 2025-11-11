@@ -240,7 +240,7 @@ class ImgPro_CDN_Admin {
                     <div class="imgpro-cdn-setup-option">
                         <div class="imgpro-cdn-setup-option-header">
                             <span class="dashicons dashicons-admin-generic"></span>
-                            <h3><?php esc_html_e('Your Own Cloudflare', 'imgpro-cdn'); ?></h3>
+                            <h3><?php esc_html_e('Cloudflare Account', 'imgpro-cdn'); ?></h3>
                         </div>
                         <p><?php esc_html_e('Deploy the worker to your own Cloudflare account for full control.', 'imgpro-cdn'); ?></p>
                         <a href="https://github.com/img-pro/wp-image-cdn-worker" target="_blank" class="button button-secondary button-hero">
