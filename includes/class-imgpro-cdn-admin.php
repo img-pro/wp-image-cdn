@@ -320,6 +320,7 @@ class ImgPro_CDN_Admin {
                             <?php
                             echo wp_kses_post(
                                 sprintf(
+                                    /* translators: %s: Link to worker setup guide */
                                     __('Want to use your own Cloudflare account? %s to deploy the worker yourself.', 'imgpro-cdn'),
                                     '<a href="https://github.com/img-pro/wp-image-cdn-worker" target="_blank">' . __('View setup guide', 'imgpro-cdn') . ' <span class="dashicons dashicons-external"></span></a>'
                                 )
