@@ -79,10 +79,10 @@ class ImgPro_CDN_Admin {
             wp_localize_script('imgpro-cdn-admin', 'imgproCdnAdmin', [
                 'nonce' => wp_create_nonce('imgpro_cdn_toggle_enabled'),
                 'i18n' => [
-                    'activeLabel' => __('Active', 'imgpro-cdn'),
-                    'disabledLabel' => __('Disabled', 'imgpro-cdn'),
-                    'activeMessage' => '<span class="imgpro-cdn-nowrap imgpro-cdn-hide-mobile">' . __('Images load faster worldwide.', 'imgpro-cdn') . '</span> <span class="imgpro-cdn-nowrap">' . __('Your bandwidth costs are being reduced.', 'imgpro-cdn') . '</span>',
-                    'disabledMessage' => __('Enable to cut bandwidth costs and speed up image delivery globally', 'imgpro-cdn'),
+                    'activeLabel' => __('Active', 'bandwidth-saver'),
+                    'disabledLabel' => __('Disabled', 'bandwidth-saver'),
+                    'activeMessage' => '<span class="imgpro-cdn-nowrap imgpro-cdn-hide-mobile">' . __('Images load faster worldwide.', 'bandwidth-saver') . '</span> <span class="imgpro-cdn-nowrap">' . __('Your bandwidth costs are being reduced.', 'bandwidth-saver') . '</span>',
+                    'disabledMessage' => __('Enable to cut bandwidth costs and speed up image delivery globally', 'bandwidth-saver'),
                 ]
             ]);
         }
@@ -93,8 +93,8 @@ class ImgPro_CDN_Admin {
      */
     public function add_menu_page() {
         add_options_page(
-            esc_html__('Image CDN', 'imgpro-cdn'),       // Page title
-            esc_html__('Image CDN', 'imgpro-cdn'),       // Menu title
+            esc_html__('Image CDN', 'bandwidth-saver'),       // Page title
+            esc_html__('Image CDN', 'bandwidth-saver'),       // Menu title
             'manage_options',                         // Capability required
             'imgpro-cdn-settings',                        // Menu slug
             [$this, 'render_settings_page']          // Callback function
@@ -153,7 +153,7 @@ class ImgPro_CDN_Admin {
             ?>
             <div class="notice notice-success is-dismissible">
                 <p>
-                    <strong><?php esc_html_e('Settings saved successfully!', 'imgpro-cdn'); ?></strong>
+                    <strong><?php esc_html_e('Settings saved successfully!', 'bandwidth-saver'); ?></strong>
                 </p>
             </div>
             <?php
@@ -173,8 +173,8 @@ class ImgPro_CDN_Admin {
         <div class="wrap imgpro-cdn-admin">
             <div class="imgpro-cdn-header">
                 <div>
-                    <h1><?php esc_html_e('Bandwidth Saver: Image CDN', 'imgpro-cdn'); ?></h1>
-                    <p class="imgpro-cdn-tagline"><?php esc_html_e('Cut bandwidth costs, boost global speed', 'imgpro-cdn'); ?></p>
+                    <h1><?php esc_html_e('Bandwidth Saver: Image CDN', 'bandwidth-saver'); ?></h1>
+                    <p class="imgpro-cdn-tagline"><?php esc_html_e('Cut bandwidth costs, boost global speed', 'bandwidth-saver'); ?></p>
                 </div>
                 <div class="imgpro-cdn-header-meta">
                     <span class="imgpro-cdn-version">v<?php echo esc_html(IMGPRO_CDN_VERSION); ?></span>
@@ -191,7 +191,7 @@ class ImgPro_CDN_Admin {
                     echo wp_kses_post(
                         sprintf(
                             /* translators: 1: ImgPro link, 2: Cloudflare R2 & Workers link */
-                            __('Bandwidth Saver: Image CDN by %1$s, powered by %2$s', 'imgpro-cdn'),
+                            __('Bandwidth Saver: Image CDN by %1$s, powered by %2$s', 'bandwidth-saver'),
                             '<a href="https://img.pro" target="_blank">ImgPro</a>',
                             '<a href="https://www.cloudflare.com/developer-platform/products/r2/" target="_blank">Cloudflare R2</a> &amp; <a href="https://www.cloudflare.com/developer-platform/products/workers/" target="_blank">Workers</a>'
                         )
@@ -215,41 +215,41 @@ class ImgPro_CDN_Admin {
         <?php if (!$is_configured): ?>
             <?php // Empty State for Unconfigured Plugin ?>
             <div class="imgpro-cdn-card imgpro-cdn-empty-state">
-                <h2><?php esc_html_e('Welcome to Bandwidth Saver', 'imgpro-cdn'); ?></h2>
+                <h2><?php esc_html_e('Welcome to Bandwidth Saver', 'bandwidth-saver'); ?></h2>
                 <p class="imgpro-cdn-empty-state-description">
-                    <?php esc_html_e('Choose how you want to deliver your images globally:', 'imgpro-cdn'); ?>
+                    <?php esc_html_e('Choose how you want to deliver your images globally:', 'bandwidth-saver'); ?>
                 </p>
 
                 <div class="imgpro-cdn-setup-options">
                     <div class="imgpro-cdn-setup-option imgpro-cdn-setup-option-cloud">
                         <div class="imgpro-cdn-setup-option-header">
                             <span class="dashicons dashicons-cloud"></span>
-                            <h3><?php esc_html_e('ImgPro Cloud', 'imgpro-cdn'); ?></h3>
-                            <span class="imgpro-cdn-badge imgpro-cdn-badge-recommended"><?php esc_html_e('Recommended', 'imgpro-cdn'); ?></span>
+                            <h3><?php esc_html_e('ImgPro Cloud', 'bandwidth-saver'); ?></h3>
+                            <span class="imgpro-cdn-badge imgpro-cdn-badge-recommended"><?php esc_html_e('Recommended', 'bandwidth-saver'); ?></span>
                         </div>
-                        <p><?php esc_html_e('Start instantly with our managed service. No Cloudflare account required.', 'imgpro-cdn'); ?></p>
+                        <p><?php esc_html_e('Start instantly with our managed service. No Cloudflare account required.', 'bandwidth-saver'); ?></p>
                         <button type="button" class="button button-primary button-hero imgpro-cdn-use-cloud" id="imgpro-cdn-use-cloud">
-                            <?php esc_html_e('Use ImgPro Cloud', 'imgpro-cdn'); ?>
+                            <?php esc_html_e('Use ImgPro Cloud', 'bandwidth-saver'); ?>
                         </button>
                         <p class="imgpro-cdn-setup-note">
                             <span class="dashicons dashicons-info"></span>
-                            <?php esc_html_e('One click setup, free for now', 'imgpro-cdn'); ?>
+                            <?php esc_html_e('One click setup, free for now', 'bandwidth-saver'); ?>
                         </p>
                     </div>
 
                     <div class="imgpro-cdn-setup-option">
                         <div class="imgpro-cdn-setup-option-header">
                             <span class="dashicons dashicons-admin-generic"></span>
-                            <h3><?php esc_html_e('Cloudflare Account', 'imgpro-cdn'); ?></h3>
+                            <h3><?php esc_html_e('Cloudflare Account', 'bandwidth-saver'); ?></h3>
                         </div>
-                        <p><?php esc_html_e('Deploy the bucket and worker to your own account for full control.', 'imgpro-cdn'); ?></p>
-                        <a href="https://github.com/img-pro/wp-image-cdn-worker" target="_blank" class="button button-secondary button-hero">
-                            <?php esc_html_e('View Setup Guide', 'imgpro-cdn'); ?>
+                        <p><?php esc_html_e('Deploy the bucket and worker to your own account for full control.', 'bandwidth-saver'); ?></p>
+                        <a href="https://github.com/img-pro/bandwidth-saver-worker" target="_blank" class="button button-secondary button-hero">
+                            <?php esc_html_e('View Setup Guide', 'bandwidth-saver'); ?>
                             <span class="dashicons dashicons-external"></span>
                         </a>
                         <p class="imgpro-cdn-setup-note">
                             <span class="dashicons dashicons-info"></span>
-                            <?php esc_html_e('15 minute setup, complete control over your infrastructure', 'imgpro-cdn'); ?>
+                            <?php esc_html_e('15 minute setup, complete control over your infrastructure', 'bandwidth-saver'); ?>
                         </p>
                     </div>
                 </div>
@@ -273,11 +273,11 @@ class ImgPro_CDN_Admin {
                             </div>
                             <div class="imgpro-cdn-toggle-content">
                                 <?php if ($settings['enabled']): ?>
-                                    <h2><?php esc_html_e('Active', 'imgpro-cdn'); ?></h2>
-                                    <p><span class="imgpro-cdn-nowrap imgpro-cdn-hide-mobile"><?php esc_html_e('Images load faster worldwide.', 'imgpro-cdn'); ?></span> <span class="imgpro-cdn-nowrap"><?php esc_html_e('Your bandwidth costs are being reduced.', 'imgpro-cdn'); ?></span></p>
+                                    <h2><?php esc_html_e('Active', 'bandwidth-saver'); ?></h2>
+                                    <p><span class="imgpro-cdn-nowrap imgpro-cdn-hide-mobile"><?php esc_html_e('Images load faster worldwide.', 'bandwidth-saver'); ?></span> <span class="imgpro-cdn-nowrap"><?php esc_html_e('Your bandwidth costs are being reduced.', 'bandwidth-saver'); ?></span></p>
                                 <?php else: ?>
-                                    <h2><?php esc_html_e('Disabled', 'imgpro-cdn'); ?></h2>
-                                    <p><?php esc_html_e('Enable to cut bandwidth costs and speed up image delivery globally', 'imgpro-cdn'); ?></p>
+                                    <h2><?php esc_html_e('Disabled', 'bandwidth-saver'); ?></h2>
+                                    <p><?php esc_html_e('Enable to cut bandwidth costs and speed up image delivery globally', 'bandwidth-saver'); ?></p>
                                 <?php endif; ?>
                             </div>
                         </div>
@@ -295,7 +295,7 @@ class ImgPro_CDN_Admin {
                             >
                             <span class="imgpro-cdn-main-toggle-slider" aria-hidden="true"></span>
                             <span class="screen-reader-text" id="enabled-description">
-                                <?php esc_html_e('Toggle Image CDN on or off. When enabled, images are delivered through Cloudflare\'s global network.', 'imgpro-cdn'); ?>
+                                <?php esc_html_e('Toggle Image CDN on or off. When enabled, images are delivered through Cloudflare\'s global network.', 'bandwidth-saver'); ?>
                             </span>
                         </label>
                     </div>
@@ -312,17 +312,17 @@ class ImgPro_CDN_Admin {
                         <span class="dashicons dashicons-cloud"></span>
                     </div>
                     <div class="imgpro-cdn-cloud-notice-content">
-                        <h4><?php esc_html_e('ImgPro Cloud', 'imgpro-cdn'); ?></h4>
+                        <h4><?php esc_html_e('ImgPro Cloud', 'bandwidth-saver'); ?></h4>
                         <p>
-                            <?php esc_html_e('You\'re using our managed service. Your images are being delivered through our shared infrastructure.', 'imgpro-cdn'); ?>
+                            <?php esc_html_e('You\'re using our managed service. Your images are being delivered through our shared infrastructure.', 'bandwidth-saver'); ?>
                         </p>
                         <p>
                             <?php
                             echo wp_kses_post(
                                 sprintf(
                                     /* translators: %s: Link to worker setup guide */
-                                    __('Want to use your Cloudflare account? %s to deploy bucket and worker domains.', 'imgpro-cdn'),
-                                    '<a href="https://github.com/img-pro/wp-image-cdn-worker" target="_blank">' . __('View the setup guide', 'imgpro-cdn') . ' <span class="dashicons dashicons-external"></span></a>'
+                                    __('Want to use your Cloudflare account? %s to deploy bucket and worker domains.', 'bandwidth-saver'),
+                                    '<a href="https://github.com/img-pro/bandwidth-saver-worker" target="_blank">' . __('View the setup guide', 'bandwidth-saver') . ' <span class="dashicons dashicons-external"></span></a>'
                                 )
                             );
                             ?>
@@ -334,8 +334,8 @@ class ImgPro_CDN_Admin {
             <?php // Image CDN Settings ?>
             <div class="imgpro-cdn-card imgpro-cdn-settings-card">
                 <div class="imgpro-cdn-card-header">
-                    <h2><?php esc_html_e('Image CDN and Worker', 'imgpro-cdn'); ?></h2>
-                    <p class="imgpro-cdn-card-description"><?php esc_html_e('Setup your domains to start delivering images globally', 'imgpro-cdn'); ?></p>
+                    <h2><?php esc_html_e('Image CDN and Worker', 'bandwidth-saver'); ?></h2>
+                    <p class="imgpro-cdn-card-description"><?php esc_html_e('Setup your domains to start delivering images globally', 'bandwidth-saver'); ?></p>
                 </div>
 
                 <div class="imgpro-cdn-settings-content">
@@ -343,7 +343,7 @@ class ImgPro_CDN_Admin {
                             <table class="form-table" role="presentation">
                                 <tr>
                                     <th scope="row">
-                                        <label for="cdn_url"><?php esc_html_e('CDN Domain', 'imgpro-cdn'); ?></label>
+                                        <label for="cdn_url"><?php esc_html_e('CDN Domain', 'bandwidth-saver'); ?></label>
                                     </th>
                                     <td>
                                         <input
@@ -357,13 +357,13 @@ class ImgPro_CDN_Admin {
                                             aria-required="true"
                                             aria-describedby="cdn-url-description"
                                         >
-                                        <p class="description" id="cdn-url-description"><?php esc_html_e('Your bucket\'s public domain, where cached images are stored and delivered.', 'imgpro-cdn'); ?></p>
+                                        <p class="description" id="cdn-url-description"><?php esc_html_e('Your bucket\'s public domain, where cached images are stored and delivered.', 'bandwidth-saver'); ?></p>
                                     </td>
                                 </tr>
 
                                 <tr>
                                     <th scope="row">
-                                        <label for="worker_url"><?php esc_html_e('Worker Domain', 'imgpro-cdn'); ?></label>
+                                        <label for="worker_url"><?php esc_html_e('Worker Domain', 'bandwidth-saver'); ?></label>
                                     </th>
                                     <td>
                                         <input
@@ -377,18 +377,18 @@ class ImgPro_CDN_Admin {
                                             aria-required="true"
                                             aria-describedby="worker-url-description"
                                         >
-                                        <p class="description" id="worker-url-description"><?php esc_html_e('Your worker domain, to fetch new images and handle cache misses.', 'imgpro-cdn'); ?></p>
+                                        <p class="description" id="worker-url-description"><?php esc_html_e('Your worker domain, to fetch new images and handle cache misses.', 'bandwidth-saver'); ?></p>
                                     </td>
                                 </tr>
                             </table>
                         </div>
 
                         <div class="imgpro-cdn-settings-section">
-                            <h3 class="imgpro-cdn-section-title"><?php esc_html_e('Advanced Options', 'imgpro-cdn'); ?></h3>
+                            <h3 class="imgpro-cdn-section-title"><?php esc_html_e('Advanced Options', 'bandwidth-saver'); ?></h3>
                             <table class="form-table" role="presentation">
                                 <tr>
                                     <th scope="row">
-                                        <label for="allowed_domains"><?php esc_html_e('Allowed Domains', 'imgpro-cdn'); ?></label>
+                                        <label for="allowed_domains"><?php esc_html_e('Allowed Domains', 'bandwidth-saver'); ?></label>
                                     </th>
                                     <td>
                                         <textarea
@@ -403,13 +403,13 @@ class ImgPro_CDN_Admin {
                                                 echo esc_textarea(implode("\n", $settings['allowed_domains']));
                                             }
                                         ?></textarea>
-                                        <p class="description" id="allowed-domains-description"><?php esc_html_e('Enable Image CDN in limited domains (one per line). Leave empty to process all images.', 'imgpro-cdn'); ?></p>
+                                        <p class="description" id="allowed-domains-description"><?php esc_html_e('Enable Image CDN in limited domains (one per line). Leave empty to process all images.', 'bandwidth-saver'); ?></p>
                                     </td>
                                 </tr>
 
                                 <tr>
                                     <th scope="row">
-                                        <label for="excluded_paths"><?php esc_html_e('Excluded Paths', 'imgpro-cdn'); ?></label>
+                                        <label for="excluded_paths"><?php esc_html_e('Excluded Paths', 'bandwidth-saver'); ?></label>
                                     </th>
                                     <td>
                                         <textarea
@@ -424,14 +424,14 @@ class ImgPro_CDN_Admin {
                                                 echo esc_textarea(implode("\n", $settings['excluded_paths']));
                                             }
                                         ?></textarea>
-                                        <p class="description" id="excluded-paths-description"><?php esc_html_e('Skip Image CDN for specific paths like checkout or cart pages (one per line).', 'imgpro-cdn'); ?></p>
+                                        <p class="description" id="excluded-paths-description"><?php esc_html_e('Skip Image CDN for specific paths like checkout or cart pages (one per line).', 'bandwidth-saver'); ?></p>
                                     </td>
                                 </tr>
 
                                 <?php if (defined('WP_DEBUG') && WP_DEBUG): ?>
                                 <tr>
                                     <th scope="row">
-                                        <label for="debug_mode"><?php esc_html_e('Debug Mode', 'imgpro-cdn'); ?></label>
+                                        <label for="debug_mode"><?php esc_html_e('Debug Mode', 'bandwidth-saver'); ?></label>
                                     </th>
                                     <td>
                                         <label for="debug_mode">
@@ -443,10 +443,10 @@ class ImgPro_CDN_Admin {
                                                 <?php checked($settings['debug_mode'], true); ?>
                                                 aria-describedby="debug-mode-description"
                                             >
-                                            <?php esc_html_e('Enable debug mode', 'imgpro-cdn'); ?>
+                                            <?php esc_html_e('Enable debug mode', 'bandwidth-saver'); ?>
                                         </label>
                                         <p class="description" id="debug-mode-description">
-                                            <?php esc_html_e('Adds debug data to images (visible in browser console and Inspect Element).', 'imgpro-cdn'); ?>
+                                            <?php esc_html_e('Adds debug data to images (visible in browser console and Inspect Element).', 'bandwidth-saver'); ?>
                                         </p>
                                     </td>
                                 </tr>
@@ -455,7 +455,7 @@ class ImgPro_CDN_Admin {
                         </div>
 
                         <div class="imgpro-cdn-form-actions">
-                            <?php submit_button(__('Save Settings', 'imgpro-cdn'), 'primary large', 'submit', false); ?>
+                            <?php submit_button(__('Save Settings', 'bandwidth-saver'), 'primary large', 'submit', false); ?>
                         </div>
                 </div>
             </div>
@@ -467,12 +467,12 @@ class ImgPro_CDN_Admin {
         // Verify nonce
         $nonce = isset($_POST['nonce']) ? sanitize_text_field(wp_unslash($_POST['nonce'])) : '';
         if (!wp_verify_nonce($nonce, 'imgpro_cdn_toggle_enabled')) {
-            wp_send_json_error(['message' => __('Security check failed', 'imgpro-cdn')]);
+            wp_send_json_error(['message' => __('Security check failed', 'bandwidth-saver')]);
         }
 
         // Verify permissions
         if (!current_user_can('manage_options')) {
-            wp_send_json_error(['message' => __('You do not have permission to perform this action', 'imgpro-cdn')]);
+            wp_send_json_error(['message' => __('You do not have permission to perform this action', 'bandwidth-saver')]);
         }
 
         // Get enabled value
@@ -485,8 +485,8 @@ class ImgPro_CDN_Admin {
         if ($current_settings['enabled'] === $enabled) {
             // Value unchanged - still success since setting is in desired state
             $message = $enabled
-                ? __('Image CDN enabled. Your images now load from Cloudflare\'s global network.', 'imgpro-cdn')
-                : __('Image CDN disabled. Images now load from your server.', 'imgpro-cdn');
+                ? __('Image CDN enabled. Your images now load from Cloudflare\'s global network.', 'bandwidth-saver')
+                : __('Image CDN disabled. Images now load from your server.', 'bandwidth-saver');
 
             wp_send_json_success(['message' => $message]);
             return;
@@ -501,12 +501,12 @@ class ImgPro_CDN_Admin {
 
         if ($result !== false) {
             $message = $enabled
-                ? __('Image CDN enabled. Your images now load from Cloudflare\'s global network.', 'imgpro-cdn')
-                : __('Image CDN disabled. Images now load from your server.', 'imgpro-cdn');
+                ? __('Image CDN enabled. Your images now load from Cloudflare\'s global network.', 'bandwidth-saver')
+                : __('Image CDN disabled. Images now load from your server.', 'bandwidth-saver');
 
             wp_send_json_success(['message' => $message]);
         } else {
-            wp_send_json_error(['message' => __('Failed to update settings. Please try again.', 'imgpro-cdn')]);
+            wp_send_json_error(['message' => __('Failed to update settings. Please try again.', 'bandwidth-saver')]);
         }
     }
 
@@ -514,12 +514,12 @@ class ImgPro_CDN_Admin {
         // Verify nonce
         $nonce = isset($_POST['nonce']) ? sanitize_text_field(wp_unslash($_POST['nonce'])) : '';
         if (!wp_verify_nonce($nonce, 'imgpro_cdn_toggle_enabled')) {
-            wp_send_json_error(['message' => __('Security check failed', 'imgpro-cdn')]);
+            wp_send_json_error(['message' => __('Security check failed', 'bandwidth-saver')]);
         }
 
         // Verify permissions
         if (!current_user_can('manage_options')) {
-            wp_send_json_error(['message' => __('You do not have permission to perform this action', 'imgpro-cdn')]);
+            wp_send_json_error(['message' => __('You do not have permission to perform this action', 'bandwidth-saver')]);
         }
 
         // Get current settings
@@ -535,7 +535,7 @@ class ImgPro_CDN_Admin {
         if ($is_already_configured) {
             // Already configured - still success since settings are in desired state
             wp_send_json_success([
-                'message' => __('ImgPro Cloud configured successfully!', 'imgpro-cdn')
+                'message' => __('ImgPro Cloud configured successfully!', 'bandwidth-saver')
             ]);
             return;
         }
@@ -551,10 +551,10 @@ class ImgPro_CDN_Admin {
 
         if ($result !== false) {
             wp_send_json_success([
-                'message' => __('ImgPro Cloud configured successfully!', 'imgpro-cdn')
+                'message' => __('ImgPro Cloud configured successfully!', 'bandwidth-saver')
             ]);
         } else {
-            wp_send_json_error(['message' => __('Failed to configure ImgPro Cloud. Please try again.', 'imgpro-cdn')]);
+            wp_send_json_error(['message' => __('Failed to configure ImgPro Cloud. Please try again.', 'bandwidth-saver')]);
         }
     }
 }

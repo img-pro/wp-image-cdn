@@ -1,14 +1,14 @@
 <?php
 /**
  * Plugin Name: Bandwidth Saver: Image CDN
- * Plugin URI: https://img.pro
+ * Plugin URI: https://github.com/img-pro/bandwidth-saver
  * Description: Deliver images from Cloudflare's global network. Save bandwidth costs with free-tier friendly R2 storage and zero egress fees.
  * Version: 0.1.0
  * Author: ImgPro
  * Author URI: https://img.pro
  * License: GPLv2 or later
  * License URI: https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain: imgpro-cdn
+ * Text Domain: bandwidth-saver
  * Domain Path: /languages
  * Requires at least: 6.2
  * Requires PHP: 7.4
@@ -25,7 +25,7 @@ if (version_compare(get_bloginfo('version'), '6.2', '<')) {
     add_action('admin_notices', function() {
         ?>
         <div class="notice notice-error">
-            <p><?php esc_html_e('Image CDN requires WordPress 6.2 or higher. Please update WordPress to use this plugin.', 'imgpro-cdn'); ?></p>
+            <p><?php esc_html_e('Image CDN requires WordPress 6.2 or higher. Please update WordPress to use this plugin.', 'bandwidth-saver'); ?></p>
         </div>
         <?php
     });
@@ -37,7 +37,7 @@ if (version_compare(PHP_VERSION, '7.4', '<')) {
     add_action('admin_notices', function() {
         ?>
         <div class="notice notice-error">
-            <p><?php esc_html_e('Image CDN requires PHP 7.4 or higher. Contact your hosting provider to upgrade.', 'imgpro-cdn'); ?></p>
+            <p><?php esc_html_e('Image CDN requires PHP 7.4 or higher. Contact your hosting provider to upgrade.', 'bandwidth-saver'); ?></p>
         </div>
         <?php
     });

@@ -81,7 +81,7 @@ Free while in beta. No credit card required.
 
 **Setup:**
 1. Deploy the Cloudflare Worker to your account (~15 minutes)
-   See: https://github.com/img-pro/wp-image-cdn-worker
+   See: https://github.com/img-pro/bandwidth-saver-worker
 2. Configure R2 bucket with custom domain
 3. Enter your domains in Settings → Image CDN
 
@@ -266,16 +266,16 @@ No hash generation, no transformation parameters - just simple caching.
 
 = Documentation =
 
-* **Plugin Repository:** https://github.com/img-pro/wp-image-cdn
-* **Worker Repository:** https://github.com/img-pro/wp-image-cdn-worker
+* **Plugin Repository:** https://github.com/img-pro/bandwidth-saver
+* **Worker Repository:** https://github.com/img-pro/bandwidth-saver-worker
 
 == Support ==
 
 For support:
 
-1. **WordPress.org Support Forum:** https://wordpress.org/support/plugin/bandwidth-saver-image-cdn/
-2. **Plugin Documentation:** https://github.com/img-pro/wp-image-cdn
-3. **Worker Documentation:** https://github.com/img-pro/wp-image-cdn-worker
+1. **WordPress.org Support Forum:** https://wordpress.org/support/plugin/bandwidth-saver/
+2. **Plugin Documentation:** https://github.com/img-pro/bandwidth-saver
+3. **Worker Documentation:** https://github.com/img-pro/bandwidth-saver-worker
 4. **Cloudflare Dashboard:** Check worker metrics and logs
 
 == External Services ==
