@@ -126,7 +126,7 @@ class ImgPro_CDN_Core {
         $settings_link = sprintf(
             '<a href="%s">%s</a>',
             esc_url(admin_url('options-general.php?page=imgpro-cdn-settings')),
-            esc_html__('Settings', 'imgpro-cdn')
+            esc_html__('Settings', 'bandwidth-saver')
         );
         array_unshift($links, $settings_link);
         return $links;
