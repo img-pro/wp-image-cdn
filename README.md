@@ -1,4 +1,4 @@
-# Image CDN – Bandwidth Saver by ImgPro
+# Bandwidth Saver: Image CDN
 
 [![WordPress Plugin Version](https://img.shields.io/badge/version-0.0.8-blue.svg)](https://wordpress.org/plugins/imgpro-cdn/)
 [![Requires WordPress Version](https://img.shields.io/badge/wordpress-6.2%2B-blue.svg)](https://wordpress.org/download/)
